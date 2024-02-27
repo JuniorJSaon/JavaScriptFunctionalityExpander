@@ -1,6 +1,6 @@
 # JavaScriptFunctionalityExpander
 
-This repository is a `JavaScript` manual where i explain some functionality and language mechanics. In
+This repository is a `JavaScript` extension where i add and modify some functionality and language mechanics. In
 some cases i use **MonkeyPatching** technique which i described below.
 
 > use *https://raw.githubusercontent.com/* to import scripts from my [library](./lib/)
