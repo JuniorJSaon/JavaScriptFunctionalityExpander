@@ -8,12 +8,49 @@ some cases i use **MonkeyPatching** technique which i described below.
 examples: 
 
 ```javascript 
-import "https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/lib/Array/push.js"
+import "https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/main/lib/Array/push.js"
 ```
 or
 
 ```html
-<script src="https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/lib/Array/push.js"></script>
+<script src="https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/main/lib/Array/push.js"></script>
+```
+
+if it didn't work then try this method:
+
+```javascript
+fetch('https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/main/lib/DOM/qs.js')
+    .then(response => {
+        if (response.ok) {
+            return response.text();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+        eval(data);
+        // Now you can use functions from qs.js
+    })
+    .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+```
+or this:
+```javascript
+const xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/main/lib/DOM/qs.js');
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        eval(xhr.responseText);
+        // Now you can use functions from qs.js
+    } else {
+        console.error('Request failed. Status:', xhr.status);
+    }
+};
+xhr.onerror = function() {
+    console.error('There was a problem with the request.');
+};
+xhr.send();
+delete xhr;
 ```
 
 # MonekeyPatching
