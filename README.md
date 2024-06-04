@@ -36,21 +36,22 @@ fetch('https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpande
 ```
 or this:
 ```javascript
-const xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/main/lib/DOM/qs.js');
-xhr.onload = function() {
-    if (xhr.status === 200) {
-        eval(xhr.responseText);
-        // Now you can use functions from qs.js
-    } else {
-        console.error('Request failed. Status:', xhr.status);
-    }
-};
-xhr.onerror = function() {
-    console.error('There was a problem with the request.');
-};
-xhr.send();
-delete xhr;
+(() => {       // use annonymous function to avoid global variable collision
+     const xhr = new XMLHttpRequest();
+     xhr.open('GET', 'https://raw.githubusercontent.com/SirFiJay/JavaScriptFunctionalityExpander/main/lib/DOM/qs.js');
+     xhr.onload = function() {
+          if (xhr.status === 200) {
+               eval(xhr.responseText);
+               // Now you can use functions from qs.js
+          } else {
+               console.error('Request failed. Status:', xhr.status);
+          }
+     };
+     xhr.onerror = function() {
+          console.error('There was a problem with the request.');
+     };
+     xhr.send();
+}) ();
 ```
 
 # MonekeyPatching
