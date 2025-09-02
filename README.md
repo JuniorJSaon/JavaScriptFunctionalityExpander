@@ -83,3 +83,7 @@ While monkeypatching can be useful for adding functionality or fixing bugs quick
 **Debugging**: Diagnosing issues can become more complicated since the source of the behavior may not be apparent from the original code or documentation.
 
 Therefore, it's typically recommended to avoid monkeypatching in production code and instead look for alternative solutions like extending classes properly, using composition, or employing other design patterns.
+
+
+## Upcoming Features i want to make
+- conpile `.wasm` file with sorting functions etc. (for faster experience)
